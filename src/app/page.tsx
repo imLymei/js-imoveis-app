@@ -1,20 +1,18 @@
 'use client';
 
-import { Share } from '@capacitor/share';
+import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Home() {
-	const share = async () => {
-		await Share.share({
-			title: 'Compartilhe meu aplicativo',
-			text: 'Compartilhe por favor!',
-			url: 'https://lymei.art',
-			dialogTitle: 'Compartilhe com amigos',
-		});
-	};
-
 	return (
-		<main className='flex justify-center items-center h-screen'>
-			<a onClick={() => share()}>Hi</a>
+		<main className='flex flex-col p-2 items-center'>
+			<Link
+				href={'https://www.jsimoveispraiagrande.com.br'}
+				target='_blank'
+				className='absolute left-2 top-2 h-10 w-10'>
+				<Image src={'/images/js-logo.png'} alt='js logo' fill className='object-contain' />
+			</Link>
+			<h1 className='text-4xl font-bold'>Bom Dia! 👋</h1>
 		</main>
 	);
 }
