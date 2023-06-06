@@ -16,6 +16,7 @@
 /build
 /android
 /ios
+/drizzle
 
 # misc
 .DS_Store

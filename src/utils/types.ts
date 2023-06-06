@@ -6,3 +6,9 @@ export type HouseType = {
 	description: string;
 	image: string;
 };
+
+export type UserType = {
+	id: number;
+	fullName: string;
+	email: string;
+};
