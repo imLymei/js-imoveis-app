@@ -10,5 +10,6 @@ const db = drizzle(client);
 
 export async function GET(request: Request, { params }: { params: any }) {
 	const allUsers = await db.select().from(users).where(eq(users.email, params.email));
+	//@ts-ignore
 	return NextResponse.json({ response: allUsers[0] });
 }

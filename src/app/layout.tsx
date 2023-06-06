@@ -1,12 +1,12 @@
 'use client';
 
-import Navbar from '@/components/Navbar';
 import './globals.css';
-import { Inter } from 'next/font/google';
-import { createContext, useEffect, useState } from 'react';
-import { createClient } from '@supabase/supabase-js';
 import { Session } from 'inspector';
-import { redirect, useRouter } from 'next/navigation';
+import { Inter } from 'next/font/google';
+import Navbar from '@/components/Navbar';
+import { useRouter } from 'next/navigation';
+import { createClient } from '@supabase/supabase-js';
+import { createContext, useEffect, useState } from 'react';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -29,6 +29,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 	const { push } = useRouter();
 
 	useEffect(() => {
+		//@ts-ignore
 		supabaseClient.auth.getSession().then(({ data: { session } }) => {
 			if (session) {
 				//@ts-ignore
@@ -39,6 +40,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
 			const {
 				data: { subscription },
+				//@ts-ignore
 			} = supabaseClient.auth.onAuthStateChange((_event, session) => {
 				//@ts-ignore
 				setSession(session);

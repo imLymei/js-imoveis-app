@@ -7,19 +7,18 @@ const connectionString = process.env.DATABASE_URL;
 const client = postgres(connectionString!, { max: 1 });
 const db = drizzle(client);
 
+// TODO: MOVER API PARA OUTRO PROJETO PQ EXPORT NAO FUNCIONA HAHAHAHAHAHAHAHAAHAHAHAHAHAHA
+
 export async function GET() {
 	const allUsers = await db.select().from(users);
 	return NextResponse.json({ response: allUsers });
 }
 
 export async function POST(request: Request) {
-	try {
-		const body = await request.json();
-		return NextResponse.json({ response: body });
-	} catch (err) {
-		const body = err;
-		return NextResponse.json({ response: body });
-	}
+	const body = await request.json();
+
+	console.log(request);
 
 	// const allUsers = await db.insert(users).values(newUser);
+	return NextResponse.json({ response: body });
 }
